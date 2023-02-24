@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&family=Rubik:wght@400;500&display=swap');
+*{
+    font-family: 'Poppins' , sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+:root{
+    --main-color : #fd4646;
+    --text-color : #171427;
+    --bg-color:#fff;
+}
+
+img{
+    width: 100%;
+    transition: all 0.7s;
+}
+
+
+body{
+    color: var(--text-color);
+    /* padding: 1rem; */
+    overflow-x: hidden;
+}
+
+button{
+    background: none;
+    border: none;
+}
+
+
+.container{
+    max-width: 1068px;
+    margin: auto;
+    width: 100%;
+}
+section{
+    
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* background: var(--bg-color); */
+    box-shadow: 0 1px 4px hsl(0 4% 15% / 10%);
+    backdrop-filter: blur(0.5rem);
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+.logo{
+    color: var(--text-color);
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+#cart-icon{
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+nav .num{
+    position: absolute;
+    z-index: 1000;
+    right: 3rem;
+    background: var(--bg-color);
+    background: transparent;
+    border: 2px solid red;
+    background-color: #fd4646;
+    border-radius: 2rem;
+    padding:  0 0.3rem;
+
+
+}
+
+.hero{
+    /* border: 2px solid red; */
+    width: 100%;
+    padding: 0.4rem;
+    /* height: 60vh; */
+    display: flex;
+    justify-content: space-between;
+    /* padding-top: rem; */
+    margin-top: 6rem;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    line-height: 2.7rem;
+
+}
+
+.hero .section-title{
+    padding: 0.5rem;
+}
+
+
+img{
+    height: 50vh;
+    width: 100%;
+    padding: 2rem;
+
+}
+
+.product-buy{
+    /* border: 2px solid blue; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+#price{
+    color: var(--main-color);
+    font-size: 1.5rem;
+
+}
+
+.addCart{
+    font-size: 2rem;
+    font-weight: 400;
+    padding: 0.5rem;
+}
+
+.dis{
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+}
+
+
+.np{
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid blue; */
+    align-items: start;
+    /* justify-content: start; */
+
+}
+
+.Collection{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax(220px , auto));
+    /* border: 2px solid red; */
+    gap: 1.5rem;
+
+}
+
+.cproduct{
+    transition: all 0.7s;
+    padding: 0.6rem;
+
+} 
+
+.cproduct:hover{
+    border-radius: 1rem;
+    box-shadow: 0 0 50px rgba(33,33,33,.2); 
+}
+
+.cimg{
+    height: 80%;
+}
+
+.cartbtn{
+    /* border: 2px solid red; */
+    width: 2rem;
+    background-repeat: no-repeat;
+    height: 2rem;
+    border-radius: 0.5rem;
+}
+
+.cartbtn:hover{
+    /* color: #fd4646; */
+    background-color: var(--main-color);
+}
+
+
+
+/*
+
+@media screen and (min-width: 789px) {
+    .hero{
+        border: 2px solid red;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .product{
+        width: 50%;
+    }
+
+    .hero h2{
+        font-size: 3rem;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+}
+
+*/
+
+footer{
+    height: 40vh;
+    width: 100%;
+    background:var(--text-color);
+    margin: 0.2rem;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+footer p{
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+@media screen and (min-width: 730px)  {
+    .hero{
+        border: 2px solid red;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        /* height: 80vh; */
+    }
+    .product{
+        width: 50%;
+    }
+
+    .hero h2{
+        font-size: 2.5em;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+}
