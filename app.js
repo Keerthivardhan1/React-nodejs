@@ -58,6 +58,8 @@ products = [
 
 const collection = document.querySelector(".Collection")
 const num = document.querySelector(".num");
+const buy = document.querySelector(".buy");   //--------- buy now button 
+const myorders = []
 
 const mycart = [];
  
@@ -156,10 +158,66 @@ function addToMyCart(uid){
 function addProduct(obj){
     // console.log("------ added ",mycart );
     mycart.push(obj);
-    
-console.log(mycart);
-   
+    console.log(mycart);
+}
+
+// -----------------------****---------------------
+
+
+//  -----------------------********** on click off buy button **********  ---------------------
+
+buy.addEventListener("click" , createOrder(cart))
+.then( (orderid)=>{
+   return proceedToPayment(orderid)
+}
+)
+.catch((err)=>{
+    console.log(err.message);
+})
+.then((successfull)=>{
+    if(successfull){
+        console.log("payment completed ");
+    }
+})
+
+
+
+
+
+
+
+
+
+function creatOrder(cart){
+    const pr = new Promise( function (resolve , reject){
+        if(!validatecart(cart)){
+            reject(new Error("validation of cart is faild"))
+        }
+        resolve("123455")
+    })
+    return pr;
 }
 
 
-// -----------------------****---------------------
+function proceedToPayment(orderid){
+    const pr = new Promise( (resolve , reject) =>{
+        
+        //   check the payment method 
+        // card datiles 
+        // payment 
+
+        // if(money got cridited to our account ) return true(resolve) else false(reject)
+
+        if(moneyCredited()){
+            resolve(true)
+        }
+        reject(new Error("payment faield"))
+    })
+}
+
+function moneyCredited(){
+    return true;
+}
+
+
+// -----------------------------------*****************************--------------------------------------------------
