@@ -5,7 +5,7 @@
 */
 
 
-products = [
+let products = [
     {
         img : "./img/product1.jpg",
         h3 : "Name1",
@@ -58,8 +58,9 @@ products = [
 
 const collection = document.querySelector(".Collection")
 const num = document.querySelector(".num");
-const buy = document.querySelector(".buy");   //--------- buy now button 
+// const place = document.querySelector(".place");   //--------- buy now button 
 const myorders = []
+const ourcart = document.querySelector(".ourcart")
 
 const mycart = [];
  
@@ -68,7 +69,7 @@ function renderproducts(){
     let i = 0;
 
     for (i in products){
-        obj = products[i]
+      const  obj = products[i]
         // console.log(products[obj]);
         const cproduct = document.createElement("div");
         cproduct.classList.add("cproduct");
@@ -92,7 +93,7 @@ function renderproducts(){
         np.appendChild(span);
         const button = document.createElement("button");
         button.classList.add("cartbtn");
-        button.name = ""+obj.id;
+        button.name = ""+obj.id;                           //<-------  setting attribute (unique number) to button cartbtn to identify which product cart btn is clicked 
         // console.log(  "------------",button.name);
         // const ii = document.createElement("i");
         // ii.classList.add("'bx','bx-cart-add','addCart'");
@@ -102,7 +103,9 @@ function renderproducts(){
         productbuy.appendChild(button);
         cproduct.appendChild(cimg);
         cproduct.appendChild(productbuy);
+        if(collection != null ){
         collection.appendChild(cproduct);
+        }
 
         // ------------
         // num.textContent = "0";
@@ -115,6 +118,12 @@ function renderproducts(){
 
 
 window.addEventListener("onlode" , renderproducts());
+
+// **********8888'
+
+
+
+
 
 // ------------- increasing number products in the cart---------
 
@@ -129,7 +138,7 @@ function increaseCart(leble){
 
 // -------------- Adding products to the cart ------------
 
-const btn = document.querySelectorAll(".cartbtn");
+const btn = document.querySelectorAll(".cartbtn");     // it will return collection of all the buttons with class cartbtn
 // console.log(btn);
 
 for(let i=0;i<btn.length;i++){     
@@ -147,9 +156,9 @@ function addToMyCart(uid){
     for (let i=0;i<products.length;i++){
         // console.log("obj is " + products[i]);
         // console.log("came2");
-        // console.log("----" + products[i].id + "-------" + uid);
+        // console.log("----" + products[i].id + "-------" + uid);     // this uid is in string we need to convert to number 
         if(products[i].id == Number(uid)){
-            // console.log("came3");
+            // console.log("came3");              // hear index of products array and uid are the same index == uid == id of product
             addProduct(products[i]);
         }
     }
@@ -158,66 +167,103 @@ function addToMyCart(uid){
 function addProduct(obj){
     // console.log("------ added ",mycart );
     mycart.push(obj);
+    feedbusket(obj);        // feeding the busket 
     console.log(mycart);
 }
 
 // -----------------------****---------------------
 
 
-//  -----------------------********** on click off buy button **********  ---------------------
-
-buy.addEventListener("click" , createOrder(cart))
-.then( (orderid)=>{
-   return proceedToPayment(orderid)
-}
-)
-.catch((err)=>{
-    console.log(err.message);
-})
-.then((successfull)=>{
-    if(successfull){
-        console.log("payment completed ");
-    }
-})
-
-
-
-
-
-
-
-
-
-function creatOrder(cart){
-    const pr = new Promise( function (resolve , reject){
-        if(!validatecart(cart)){
-            reject(new Error("validation of cart is faild"))
-        }
-        resolve("123455")
-    })
-    return pr;
-}
-
-
-function proceedToPayment(orderid){
-    const pr = new Promise( (resolve , reject) =>{
-        
-        //   check the payment method 
-        // card datiles 
-        // payment 
-
-        // if(money got cridited to our account ) return true(resolve) else false(reject)
-
-        if(moneyCredited()){
-            resolve(true)
-        }
-        reject(new Error("payment faield"))
-    })
-}
-
-function moneyCredited(){
-    return true;
-}
-
-
 // -----------------------------------*****************************--------------------------------------------------
+// const cart = document.querySelectorAll(".cart")    xxxxxx
+const cart = document.getElementById("cart")
+if(ourcart != null ){
+ourcart.addEventListener("click",()=>{
+    console.log("out--cart");
+    const visibility = cart.getAttribute("data-visible")
+    console.log("visivi00" , visibility);
+
+    if(visibility === "false"){
+        cart.setAttribute("data-visible" , "true")
+    }
+    if(visibility === "true"){
+        cart.setAttribute("data-visible" , "false")
+    }
+
+})
+}
+
+//-----------------------------------*****************************--------------------------------------------------
+//               Feeding to the Busket      ->--->
+
+
+function feedbusket(obj){
+
+
+}
+//[[]][][[][][][][][][]]
+
+
+export { mycart , products  , myorders };
+
+// let place = document.querySelector(".place");
+// let remove = document.querySelector(".remove");
+// let increase = document.querySelector(".increase");
+// let decrease = document.querySelector(".decrease");
+
+// //  -----------------------********** on click off buy button **********  ---------------------
+
+
+// place.addEventListener("click" , createOrder(mycart))
+// .then( (orderid)=>{
+//    return proceedToPayment(orderid)
+// }
+// )
+// .catch((err)=>{
+//     console.log(err.message);
+// })
+// .then((successfull)=>{
+//     if(successfull){
+//         console.log("payment completed ");
+//     }
+// })
+
+
+
+// function creatOrder(cart){
+//     const pr = new Promise( function (resolve , reject){
+//         if(!validatecart(cart)){
+//             reject(new Error("validation of cart is faild"))
+//         }
+//         console.log("cart validation compleated ...");
+//         console.log("order created .. ");
+//         console.log("proceeding to payment ....");
+//         resolve("123455")
+//     })
+//     return pr;
+// }
+
+
+// function proceedToPayment(orderid){
+//     const pr = new Promise( (resolve , reject) =>{
+        
+//         //   check the payment method 
+//         // card datiles 
+//         // payment 
+
+//         // if(money got cridited to our account ) return true(resolve) else false(reject)
+
+//         if(moneyCredited()){
+//             console.log(" payment compleated ..");
+//             resolve(true)
+//         }
+//         reject(new Error("payment faield"))
+//     })
+// }
+
+// function moneyCredited(){
+//     console.log(" money credited to out account ");
+//     return true;
+// }
+
+
