@@ -1,8 +1,11 @@
 
 /*
  adding multipple class to an elements ---> ii.classList.add("'bx','bx-cart-add','addCart'");
+
  himanshu
  shashi
+keerthivardhan
+
 */
 
 
@@ -170,6 +173,7 @@ function addProduct(obj){
     mycart.push(obj);
     feedbusket(obj);        // feeding the busket 
     console.log(mycart);
+    localStorage.setItem('myData', JSON.stringify(mycart));
 }
 
 // -----------------------****---------------------
@@ -204,7 +208,9 @@ function feedbusket(obj){
 }
 //[[]][][[][][][][][][]]
 
+console.log("mycart is the -- " + mycart)
 
+localStorage.setItem('myData', JSON.stringify(mycart));
 export { mycart , products  , myorders };
 
 // let place = document.querySelector(".place");
