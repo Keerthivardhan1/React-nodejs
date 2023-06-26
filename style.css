@@ -369,6 +369,8 @@ footer p{
 
 .removeOrIncreaseOrDecrease{
     padding: 1rem;
+    display: flex;
+    gap: 0.5rem;
 
 }
 
@@ -410,6 +412,7 @@ footer p{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
+    animation: show-popup 1s ease-in-out;
   }
   
   #popup-content {
@@ -419,7 +422,6 @@ footer p{
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 2rem;
-    transition: all 0.3s;
   }
   
   #popup-close {
@@ -428,6 +430,16 @@ footer p{
     font-size: 1.5rem;
     color: var(--main-color2);
     font-weight: 500;
+  }
+  @keyframes show-popup {
+    0% {
+      opacity: 0;
+      transform: translate(0,50%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
   }
   
 
