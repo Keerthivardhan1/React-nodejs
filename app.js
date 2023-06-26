@@ -2,6 +2,7 @@
 /*
  adding multipple class to an elements ---> ii.classList.add("'bx','bx-cart-add','addCart'");
  himanshu
+ shashi
 */
 
 
