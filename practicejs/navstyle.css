@@ -1,0 +1,70 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body{
+    background: url(./background-home-mobile.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+li{
+    list-style-type: none;
+}
+
+.primary-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.primary-navigation{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* border: 2px solid red; */
+    gap: 2rem;
+    font-size: 1.4rem;
+}
+
+/* .primary-navigation ul{
+    display: flex;
+} */
+
+@media (max-width : 700px) {
+    .primary-navigation{
+        position: fixed;
+        inset: 0 0 0 30%;
+        flex-direction: column;
+        padding: min(30vh , 10rem) 2rem;
+        /* background-color: aqua; */
+            
+        background: hsl(0 0% 0% / 0.75);
+        color: white;
+        z-index: 1000;
+    }
+
+    @supports (backdrop-filter : blur(1rem)){
+        .primary-navigation{
+            background: hsl(0 0% 100% / 0.1);
+            backdrop-filter: blur(1rem);  
+        }
+    }
+
+    .menu{
+        position: absolute;
+        background: red;
+        width: 2rem;
+        aspect-ratio: 1;
+        top:2rem;
+        right: 2rem;
+        z-index: 9999;
+        background: url(./menu.svg);
+        background-repeat: no-repeat;
+        border: none;
+    }
+}
